@@ -9,14 +9,14 @@
 
 export interface GetMyLanguages_me_languages {
   __typename: "Language";
-  id: number;
+  id: string;
   name: string;
   description: string | null;
 }
 
 export interface GetMyLanguages_me {
   __typename: "User";
-  id: number;
+  id: string;
   email: string;
   languages: (GetMyLanguages_me_languages | null)[] | null;
 }

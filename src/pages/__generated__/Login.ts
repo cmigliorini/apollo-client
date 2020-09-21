@@ -9,12 +9,12 @@
 
 export interface Login_login {
   __typename: "User";
-  id: number;
+  id: string;
   token: string | null;
 }
 
 export interface Login {
-  login: Login_login | null;
+  login: Login_login;
 }
 
 export interface LoginVariables {

@@ -9,7 +9,7 @@
 
 export interface LanguageTile {
   __typename: "Language";
-  id: number;
+  id: string;
   name: string;
   description: string | null;
 }

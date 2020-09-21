@@ -22,12 +22,8 @@ export default function Login() {
     LOGIN_USER,
     {
       onCompleted({ login }) {
-        if (!login) {
-          isLoggedInVar(false);
-          return;
-        }
         localStorage.setItem('token', login.token as string);
-        localStorage.setItem('userId', login.id as unknown as string);
+        localStorage.setItem('userId', login.id);
         isLoggedInVar(true);
       }
     }
