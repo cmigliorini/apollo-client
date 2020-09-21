@@ -17,7 +17,7 @@ const client = new ApolloClient({
   cache,
   headers: {
     authorization: localStorage.getItem('token') || '',
-    'client-name': 'Space Explorer [web]',
+    'client-name': 'Language Explorer [web]',
     'client-version': '1.0.0',
   },
   typeDefs,
