@@ -14,7 +14,12 @@ export const typeDefs = gql`
 const client = new ApolloClient({
   uri: 'https://mig-apollo.azurewebsites.net/api/graphql?code=gaRzafxqBxWi6LRbZJndfbAe79K6nQgOYXKMIgHLzXMaCgEMWnVFog==',
   cache: cache,
-  typeDefs
+  headers: {
+    authorization: localStorage.getItem('token') || '',
+    'client-name': 'Mig Apollo Client [web]',
+    'client-version': '1.0.0',
+  },
+  typeDefs,
 });
 
 const LANGUAGES = gql`
