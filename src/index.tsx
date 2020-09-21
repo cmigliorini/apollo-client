@@ -16,8 +16,8 @@ const client = new ApolloClient({
   uri: 'https://mig-apollo.azurewebsites.net/api/graphql?code=gaRzafxqBxWi6LRbZJndfbAe79K6nQgOYXKMIgHLzXMaCgEMWnVFog==',
   cache,
   headers: {
-    authorization: localStorage.getItem('token') || '',
-    'client-name': 'Language Explorer [web]',
+    Authorization: localStorage.getItem('token') || 'NO',
+    'client-name': 'Space Explorer [web]',
     'client-version': '1.0.0',
   },
   typeDefs,
