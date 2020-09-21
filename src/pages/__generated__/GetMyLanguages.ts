@@ -4,16 +4,23 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: getLanguages
+// GraphQL query operation: GetMyLanguages
 // ====================================================
 
-export interface getLanguages_allLanguages {
+export interface GetMyLanguages_me_languages {
   __typename: "Language";
   id: number;
   name: string;
   description: string | null;
 }
 
-export interface getLanguages {
-  allLanguages: (getLanguages_allLanguages | null)[] | null;
+export interface GetMyLanguages_me {
+  __typename: "User";
+  id: number;
+  email: string;
+  languages: (GetMyLanguages_me_languages | null)[] | null;
+}
+
+export interface GetMyLanguages {
+  me: GetMyLanguages_me | null;
 }
