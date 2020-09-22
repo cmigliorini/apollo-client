@@ -26,8 +26,8 @@ const LanguageTile: React.FC<LanguageTileProps> = ({ language }) => {
         backgroundImage: getBackgroundImage(language.id as unknown as string),
       }}
     >
-      <h3>{name ? name : ''}</h3>
-      <h5>{description}</h5>
+      <h3>{name ? name : ''} {language.isAcquired && <em>*</em>}</h3>
+      <p>{description}</p>
     </StyledLink>
   );
 }
