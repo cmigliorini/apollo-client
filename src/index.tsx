@@ -1,25 +1,36 @@
-import { ApolloProvider, ApolloClient, useQuery, gql } from '@apollo/client';
-
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
+import {
+  ApolloClient,
+  NormalizedCacheObject,
+  ApolloProvider,
+  useQuery,
+  gql, HttpLink
+} from '@apollo/client';
+
 import Pages from './pages';
 import Login from './pages/login';
+import injectStyles from './styles';
 import { cache } from './cache';
 
 export const typeDefs = gql`
   extend type Query {
     isLoggedIn: Boolean!
+    cartItems: [ID!]!
   }
 `;
 
-const client = new ApolloClient({
-  uri: 'https://mig-apollo.azurewebsites.net/api/graphql?code=gaRzafxqBxWi6LRbZJndfbAe79K6nQgOYXKMIgHLzXMaCgEMWnVFog==',
+const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   cache,
-  headers: {
-    authorization: localStorage.getItem('token') || '',
-    'client-name': 'Language Explorer [web]',
-    'client-version': '1.0.0',
-  },
+  link: new HttpLink({
+    uri: 'https://mig-apollo.azurewebsites.net/api/graphql?code=gaRzafxqBxWi6LRbZJndfbAe79K6nQgOYXKMIgHLzXMaCgEMWnVFog==',
+    // uri: 'http://localhost:7071/api/graphql',
+    headers: {
+      authorization: localStorage.getItem('token') || '',
+      'client-name': 'Languages Explorer [web]',
+      'client-version': '1.0.0', 
+    },
+  }),
   typeDefs,
   resolvers: {},
 });
@@ -35,13 +46,10 @@ function IsLoggedIn() {
   return data.isLoggedIn ? <Pages /> : <Login />;
 }
 
-function App() {
-  return (
-    <ApolloProvider client={client}>
-      <IsLoggedIn />
-    </ApolloProvider>
-  );
-}
-
-render(<App />, document.getElementById('root'));
-
+injectStyles();
+ReactDOM.render(
+  <ApolloProvider client={client}>
+    <IsLoggedIn />
+  </ApolloProvider>,
+  document.getElementById('root'),
+);

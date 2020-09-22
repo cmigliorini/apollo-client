@@ -14,7 +14,7 @@ const LanguageDetail: React.FC<LanguageDetailProps> = ({ id, name, description }
     }}
   >
     <h3>
-      {name})
+      {name}
     </h3>
     <p>{description}</p>
   </Card>

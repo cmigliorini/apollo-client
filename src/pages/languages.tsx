@@ -10,6 +10,7 @@ export const LANGUAGE_TILE_DATA = gql`
     id
     name
     description
+    isAcquired
   }
 `;
 
@@ -40,12 +41,11 @@ const Languages: React.FC<LanguagesProps> = () => {
   return (
     <Fragment>
       <Header />
-      {data.languages &&
-        data.languages.languages &&
-        data.languages.languages.map((language: any) => (
+      {data.allLanguages &&
+        data.allLanguages.map((language: any) => (
           <LanguageTile key={language.id} language={language} />
         ))}
-      {data.languages && data.languages.hasMore && (
+      {data.allLanguages && data.allLanguages.hasMore && (
         isLoadingMore
           ? <Loading />
           : <Button
@@ -53,7 +53,7 @@ const Languages: React.FC<LanguagesProps> = () => {
                 setIsLoadingMore(true);
                 await fetchMore({
                   variables: {
-                    after: data.languages.cursor,
+                    after: data.allLanguages.cursor,
                   },
                 });
                 setIsLoadingMore(false);
@@ -61,8 +61,7 @@ const Languages: React.FC<LanguagesProps> = () => {
             >
               Load More
             </Button>
-      )}
-    </Fragment>
+      )}    </Fragment>
   );
 }
 

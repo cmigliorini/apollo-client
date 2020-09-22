@@ -9,9 +9,10 @@
 
 export interface GetLanguagesList_allLanguages {
   __typename: "Language";
-  id: number;
+  id: string;
   name: string;
   description: string | null;
+  isAcquired: boolean;
 }
 
 export interface GetLanguagesList {

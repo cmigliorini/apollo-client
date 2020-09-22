@@ -4,10 +4,10 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: GetMyLanguages
+// GraphQL query operation: LanguageDetails
 // ====================================================
 
-export interface GetMyLanguages_me_languages {
+export interface LanguageDetails_language {
   __typename: "Language";
   id: string;
   name: string;
@@ -15,13 +15,10 @@ export interface GetMyLanguages_me_languages {
   isAcquired: boolean;
 }
 
-export interface GetMyLanguages_me {
-  __typename: "User";
-  id: string;
-  email: string;
-  languages: (GetMyLanguages_me_languages | null)[] | null;
+export interface LanguageDetails {
+  language: LanguageDetails_language | null;
 }
 
-export interface GetMyLanguages {
-  me: GetMyLanguages_me | null;
+export interface LanguageDetailsVariables {
+  languageId: string;
 }

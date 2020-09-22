@@ -4,19 +4,10 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: Login
+// GraphQL fragment: RemoveLanguage
 // ====================================================
 
-export interface Login_login {
-  __typename: "User";
+export interface RemoveLanguage {
+  __typename: "Language";
   id: string;
-  token: string | null;
-}
-
-export interface Login {
-  login: Login_login;
-}
-
-export interface LoginVariables {
-  email: string;
 }
