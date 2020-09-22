@@ -16,7 +16,7 @@ import { cache } from './cache';
 export const typeDefs = gql`
   extend type Query {
     isLoggedIn: Boolean!
-    # cartItems: [ID!]!
+    cartItems: [ID!]!
   }
 `;
 
@@ -24,10 +24,11 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   cache,
   link: new HttpLink({
     uri: 'https://mig-apollo.azurewebsites.net/api/graphql?code=gaRzafxqBxWi6LRbZJndfbAe79K6nQgOYXKMIgHLzXMaCgEMWnVFog==',
+    // uri: 'http://localhost:7071/api/graphql',
     headers: {
       authorization: localStorage.getItem('token') || '',
       'client-name': 'Languages Explorer [web]',
-      'client-version': '1.0.0',  
+      'client-version': '1.0.0', 
     },
   }),
   typeDefs,

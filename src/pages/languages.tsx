@@ -10,6 +10,7 @@ export const LANGUAGE_TILE_DATA = gql`
     id
     name
     description
+    isAcquired
   }
 `;
 

@@ -4,13 +4,9 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL fragment: LanguageTile
+// GraphQL query operation: GetCartItems
 // ====================================================
 
-export interface LanguageTile {
-  __typename: "Language";
-  id: string;
-  name: string;
-  description: string | null;
-  isAcquired: boolean;
+export interface GetCartItems {
+  cartItems: string[];
 }

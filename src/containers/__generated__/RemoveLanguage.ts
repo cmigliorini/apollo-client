@@ -4,13 +4,10 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL fragment: LanguageTile
+// GraphQL fragment: RemoveLanguage
 // ====================================================
 
-export interface LanguageTile {
+export interface RemoveLanguage {
   __typename: "Language";
   id: string;
-  name: string;
-  description: string | null;
-  isAcquired: boolean;
 }

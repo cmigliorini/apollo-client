@@ -4,7 +4,7 @@ import { gql, useQuery } from '@apollo/client';
 
 import { LANGUAGE_TILE_DATA } from './languages';
 import { Loading, Header, LanguageDetail } from '../components';
-//import { ActionButton } from '../containers';
+import { ActionButton } from '../containers';
 import * as LanguageDetailsTypes from './__generated__/LanguageDetails';
 
 interface LanguageProps extends RouteComponentProps {
@@ -33,7 +33,7 @@ const Language: React.FC<LanguageProps> = ({ languageId }) => {
         {data && data.language && data.language.name}
       </Header>
       <LanguageDetail {...data.language} />
-      {/* <ActionButton {...data.language} /> */}
+      <ActionButton {...data.language} />
     </Fragment>
   );
 }
