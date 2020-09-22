@@ -3,7 +3,7 @@ import { Router } from '@reach/router';
 
 import Language from './language';
 import Languages from './languages';
-//import Cart from './cart';
+import Cart from './cart';
 import Profile from './profile';
 import { Footer, PageContainer } from '../components';
 
@@ -14,7 +14,7 @@ export default function Pages() {
         <Router primary={false} component={Fragment}>
           <Languages path="/" />
           <Language path="language/:languageId" />
-          {/*<Cart path="cart" /> */}
+          <Cart path="cart" />
           <Profile path="profile" />
         </Router>
       </PageContainer>

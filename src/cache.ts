@@ -10,19 +10,19 @@ export const cache: InMemoryCache = new InMemoryCache({
         cartItems() {
           return cartItemsVar();
         },
-        launches: {
+        languages: {
           keyArgs: false,
           merge(existing, incoming) {
-            let launches: Reference[] = [];
-            if (existing && existing.launches) {
-              launches = launches.concat(existing.launches);
+            let languages: Reference[] = [];
+            if (existing && existing.languages) {
+              languages = languages.concat(existing.languages);
             }
-            if (incoming && incoming.launches) {
-              launches = launches.concat(incoming.launches);
+            if (incoming && incoming.languages) {
+              languages = languages.concat(incoming.languages);
             }
             return {
               ...incoming,
-              launches,
+              languages,
             };
           }
         }
