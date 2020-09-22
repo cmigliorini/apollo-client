@@ -12,6 +12,7 @@ export interface GetLanguagesList_allLanguages {
   id: string;
   name: string;
   description: string | null;
+  isAcquired: boolean;
 }
 
 export interface GetLanguagesList {

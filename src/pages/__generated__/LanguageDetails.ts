@@ -12,6 +12,7 @@ export interface LanguageDetails_language {
   id: string;
   name: string;
   description: string | null;
+  isAcquired: boolean;
 }
 
 export interface LanguageDetails {
