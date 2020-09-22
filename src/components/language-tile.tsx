@@ -7,6 +7,7 @@ import iss from '../assets/images/iss.jpg';
 import moon from '../assets/images/moon.jpg';
 import { unit } from '../styles';
 import * as LanguageTileTypes from '../pages/__generated__/LanguageTile';
+import acquired from '../assets/icons/tick.svg';
 
 const backgrounds = [galaxy, iss, moon];
 export function getBackgroundImage(id: string) {
@@ -18,7 +19,7 @@ interface LanguageTileProps {
 }
 
 const LanguageTile: React.FC<LanguageTileProps> = ({ language }) => {
-  const { id, name, description } = language;
+  const { id, name, description, isAcquired } = language;
   return (
     <StyledLink
       to={`/language/${id}`}
@@ -26,7 +27,7 @@ const LanguageTile: React.FC<LanguageTileProps> = ({ language }) => {
         backgroundImage: getBackgroundImage(language.id as unknown as string),
       }}
     >
-      <h3>{name ? name : ''} {language.isAcquired && <em>*</em>}</h3>
+      <h3>{name ? name : ''} {isAcquired && <img alt="" src={acquired}></img>} </h3>
       <p>{description}</p>
     </StyledLink>
   );
