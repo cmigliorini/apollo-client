@@ -16,9 +16,6 @@ const LanguageDetail: React.FC<LanguageDetailProps> = ({ id, name, description, 
     <h3>
       {name}
     </h3>
-    {languageTypes && <ul>
-      {languageTypes.map(lt => <li>{lt.name}</li>)}
-    </ul>}
     <p>{description}</p>
   </Card>
 );
