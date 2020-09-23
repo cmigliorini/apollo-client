@@ -4,21 +4,16 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL fragment: LanguageTile
+// GraphQL query operation: LanguageTypes
 // ====================================================
 
-export interface LanguageTile_languageTypes {
+export interface LanguageTypes_allLanguageTypes {
   __typename: "LanguageType";
   id: string;
   name: string;
   description: string | null;
 }
 
-export interface LanguageTile {
-  __typename: "Language";
-  id: string;
-  name: string;
-  description: string | null;
-  isAcquired: boolean;
-  languageTypes: LanguageTile_languageTypes[] | null;
+export interface LanguageTypes {
+  allLanguageTypes: (LanguageTypes_allLanguageTypes | null)[] | null;
 }

@@ -3,14 +3,14 @@ import styled from 'react-emotion';
 
 import { unit } from '../styles';
 import { cardClassName, getBackgroundImage } from './language-tile';
-import  * as GetLanguagesListTypes  from '../pages/__generated__/GetLanguagesList';
+import * as GetLanguagesListTypes from '../pages/__generated__/GetLanguagesList';
 
 type LanguageDetailProps = Partial<GetLanguagesListTypes.GetLanguagesList_allLanguages>
 
-const LanguageDetail: React.FC<LanguageDetailProps> = ({ id, name, description }) => (
+const LanguageDetail: React.FC<LanguageDetailProps> = ({ id, name, description, languageTypes }) => (
   <Card
     style={{
-       backgroundImage: getBackgroundImage(id as unknown as string),
+      backgroundImage: getBackgroundImage(id as unknown as string),
     }}
   >
     <h3>

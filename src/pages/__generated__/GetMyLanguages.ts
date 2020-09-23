@@ -7,12 +7,20 @@
 // GraphQL query operation: GetMyLanguages
 // ====================================================
 
+export interface GetMyLanguages_me_languages_languageTypes {
+  __typename: "LanguageType";
+  id: string;
+  name: string;
+  description: string | null;
+}
+
 export interface GetMyLanguages_me_languages {
   __typename: "Language";
   id: string;
   name: string;
   description: string | null;
   isAcquired: boolean;
+  languageTypes: GetMyLanguages_me_languages_languageTypes[] | null;
 }
 
 export interface GetMyLanguages_me {

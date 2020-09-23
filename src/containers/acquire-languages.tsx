@@ -42,7 +42,7 @@ const AcquireLanguages: React.FC<AcquireLanguagesProps> = ({ cartItems }) => {
         }}
         data-testid="book-button"
       >
-        Book All
+        Acquire All
       </Button>
     );
 }
