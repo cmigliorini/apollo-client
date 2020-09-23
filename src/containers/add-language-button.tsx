@@ -2,7 +2,7 @@ import React from 'react';
 import { gql, useMutation } from '@apollo/client';
 
 import * as LanguageDetailTypes from '../pages/__generated__/LanguageDetails';
-import ButtonSmall from '../components/button-small';
+import { ButtonSmallDark, ButtonSmallLight } from '../components/button-small';
 import tick from '../assets/icons/tick.svg';
 
 interface LanguageTypeButtonProps extends Partial<LanguageDetailTypes.LanguageDetails_language> {
@@ -30,13 +30,9 @@ const AddLanguageTypeButton: React.FC<LanguageTypeButtonProps> = ({ id, language
     if (error) return <p>An error occurred</p>;
 
     return (
-        <div>
-            <ButtonSmall
-                onClick={() => mutate()}
-            >
-                {languageType.name}
-            </ButtonSmall>
-        </div>
+        <ButtonSmallLight onClick={() => mutate()}>
+            {languageType.name}
+        </ButtonSmallLight>
     );
 };
 
@@ -58,13 +54,9 @@ const RemoveLanguageTypeButton: React.FC<LanguageTypeButtonProps> = ({ id, langu
     if (error) return <p>An error occurred</p>;
 
     return (
-        <div>
-            <ButtonSmall
-                onClick={() => mutate()}
-            >
-                {languageType.name}     <img alt="X" src={tick}></img>
-            </ButtonSmall>
-        </div>
+        <ButtonSmallDark onClick={() => mutate()} >
+            {languageType.name} <img alt="X" src={tick}></img>
+        </ButtonSmallDark>
     );
 };
 
