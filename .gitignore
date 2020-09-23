@@ -43,16 +43,4 @@ __pycache__/
 *$py.class
 
 .DS_Store
-build/asset-manifest.json
-build/favicon.ico
-build/index.html
-build/manifest.json
-build/precache-manifest.1fd7270e2edbde898a86bec04bfaa011.js
-build/service-worker.js
-build/static/js/2.cc6a0393.chunk.js
-build/static/js/2.cc6a0393.chunk.js.LICENSE.txt
-build/static/js/2.cc6a0393.chunk.js.map
-build/static/js/main.b556e62c.chunk.js
-build/static/js/main.b556e62c.chunk.js.map
-build/static/js/runtime-main.54bff432.js
-build/static/js/runtime-main.54bff432.js.map
+build/
