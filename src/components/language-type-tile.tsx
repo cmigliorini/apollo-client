@@ -1,21 +1,17 @@
 import React from 'react';
 import * as LanguageTileTypes from '../pages/__generated__/LanguageTile';
-import ButtonSmall from './button-small';
-import tick from '../assets/icons/tick.svg';
+import LanguageTypeButton from '../containers/add-language-button';
 
 interface LanguageTileTypeProps {
     language: LanguageTileTypes.LanguageTile;
     languageTypes: LanguageTileTypes.LanguageTile_languageTypes[];
 }
 
-const LanguageTypeTile: React.FC<LanguageTileTypeProps> = ({ language, languageTypes }) => {
-    return <div>{languageTypes.map(lt => {
-        const isOfType: boolean = language.languageTypes ? language.languageTypes.map(t => t.id).includes(lt.id) : false;
-
-        return <ButtonSmall>{lt.name}{isOfType && <img alt="" src={tick}></img>}</ButtonSmall>
-    })}
-    </div>
-}
+const LanguageTypeTile: React.FC<LanguageTileTypeProps> = ({ language, languageTypes }) => 
+    language && language.languageTypes && <div>
+        {languageTypes.map(lt => 
+        <LanguageTypeButton id={language.id} languageType={lt} languageTypes={language.languageTypes} />)}
+    </div>;
 
 
 //   <StyledLink
