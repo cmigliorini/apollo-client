@@ -2,14 +2,20 @@ import React from 'react';
 import styled, { css } from 'react-emotion';
 import { Link } from '@reach/router';
 
-import galaxy from '../assets/images/galaxy.jpg';
-import iss from '../assets/images/iss.jpg';
-import moon from '../assets/images/moon.jpg';
+import binary from '../assets/images/binary.png';
+import c from '../assets/images/c.png';
+import chalkboard from '../assets/images/chalkboard.jpg';
+import html from '../assets/images/html.png';
+import js from '../assets/images/js.jpg';
+import matrix from '../assets/images/matrix.jpg';
+import php from '../assets/images/php.jpg';
+import robot from '../assets/images/robot.png';
+
 import { unit } from '../styles';
 import * as LanguageTileTypes from '../pages/__generated__/LanguageTile';
 import acquired from '../assets/icons/tick.svg';
 
-const backgrounds = [galaxy, iss, moon];
+const backgrounds = [binary, c, chalkboard, html, js, matrix, php, robot];
 export function getBackgroundImage(id: string) {
   return `url(${backgrounds[Number(id) % backgrounds.length]})`;
 }
