@@ -10,7 +10,7 @@ interface LanguageTileTypeProps {
 const LanguageTypeTile: React.FC<LanguageTileTypeProps> = ({ language, languageTypes }) => 
     language && language.languageTypes && <div>
         {languageTypes.map(lt => 
-        <LanguageTypeButton id={language.id} languageType={lt} languageTypes={language.languageTypes} />)}
+        <LanguageTypeButton key={language.id+'-'+lt.id} id={language.id} languageType={lt} languageTypes={language.languageTypes} />)}
     </div>;
 
 

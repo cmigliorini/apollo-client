@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { gql, useMutation } from '@apollo/client';
 
 import * as LanguageDetailTypes from '../pages/__generated__/LanguageDetails';
@@ -18,59 +18,44 @@ export const ADD_LANGUAGE_TYPE = gql`
   }
 `;
 
-const AddLanguageTypeButton: React.FC<LanguageTypeButtonProps> = ({ id, languageType }) => {
-    const [mutate, { loading, error }] = useMutation(
-        ADD_LANGUAGE_TYPE,
-        {
-            variables: { languageId: id, languageTypeId: languageType.id },
-        }
-    );
-
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>An error occurred</p>;
-
-    return (
-        <ButtonSmallLight onClick={() => mutate()}>
-            {languageType.name}
-        </ButtonSmallLight>
-    );
-};
-
 export const REMOVE_LANGUAGE_TYPE = gql`
   mutation RemoveLanguageType($languageId: ID!, $languageTypeId: ID!) {
     dissociateLanguageFromType(languageId: $languageId, languageTypeId: $languageTypeId)
   }
 `;
 
-const RemoveLanguageTypeButton: React.FC<LanguageTypeButtonProps> = ({ id, languageType }) => {
-    const [mutate, { loading, error }] = useMutation(
-        REMOVE_LANGUAGE_TYPE,
-        {
-            variables: { languageId: id, languageTypeId: languageType.id },
-        }
-    );
-
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>An error occurred</p>;
-
-    return (
-        <ButtonSmallDark onClick={() => mutate()} >
-            {languageType.name} <img alt="X" src={tick}></img>
-        </ButtonSmallDark>
-    );
-};
-
-const LanguageTypeButton: React.FC<LanguageTypeButtonProps> =
+const ToggleLanguageTypeButton: React.FC<LanguageTypeButtonProps> =
     ({ id, languageTypes, languageType }) => {
-        // Is requested language type in language's ones ?
-        const isIn =
-            languageTypes &&
-            languageTypes
-                .map(lt => lt.id)
-                .includes(languageType.id);
-        // display relevant button
-        return isIn ?
-            <RemoveLanguageTypeButton id={id} languageType={languageType} /> :
-            <AddLanguageTypeButton id={id} languageType={languageType} />
-    };
-export default LanguageTypeButton;
+        // facility variables
+        const languageTypesIds = languageTypes?.map(lt => lt.id);
+        const isOfType = languageType.id && languageTypesIds ? languageTypesIds.includes(languageType.id) : false;
+        const [newIsOfType, toggleLanguageType] = useState(isOfType);
+
+        // The mutations
+        const [removeLanguage, { loading: loadingRemove, error: errorRemove }] = useMutation(
+            REMOVE_LANGUAGE_TYPE,
+            {
+                variables: { languageId: id, languageTypeId: languageType.id },
+            }
+        );
+        const [addLanguage, { loading: loadingAdd, error: errorAdd }] = useMutation(
+            ADD_LANGUAGE_TYPE,
+            {
+                variables: { languageId: id, languageTypeId: languageType.id },
+            }
+        );
+        const mutate: ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void) = () => {
+            if (id && languageType.id) {
+                newIsOfType ? removeLanguage() : addLanguage();
+                toggleLanguageType(!newIsOfType);
+            }
+        };
+        if (loadingAdd || loadingRemove) return <ButtonSmallLight>Loading...</ButtonSmallLight>;
+        if (errorAdd || errorRemove) return <ButtonSmallLight>An error occurred</ButtonSmallLight>;
+
+        return newIsOfType ?
+            <ButtonSmallDark onClick={mutate}>{languageType.name} <img alt="X" src={tick}></img></ButtonSmallDark> :
+            <ButtonSmallLight onClick={mutate}>{languageType.name}</ButtonSmallLight>;
+    }
+
+export default ToggleLanguageTypeButton;

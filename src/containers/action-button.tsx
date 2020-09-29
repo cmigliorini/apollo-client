@@ -73,7 +73,7 @@ const ForgetLanguageButton: React.FC<ActionButtonProps> = ({ id }) => {
 const ToggleLanguageButton: React.FC<ActionButtonProps> = ({ id }) => {
   const cartItems = cartItemsVar();
   const isInCart = id ? cartItems.includes(id) : false;
-  const [, toggleTrip] = useState(isInCart);
+  const [, toggleLanguage] = useState(isInCart);
   return (
     <div>
       <Button
@@ -85,7 +85,7 @@ const ToggleLanguageButton: React.FC<ActionButtonProps> = ({ id }) => {
                 : [...cartItems, id]
             );
             // Trigger a re-render to pick up the `cartItemsVar` changes.
-            toggleTrip(!isInCart);
+            toggleLanguage(!isInCart);
           }
         }}
         data-testid={'action-button'}
